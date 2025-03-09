@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    {"id": "InputLayer", "type": "Dense", "units": 128, "activation": "relu"},
+    {"id": "HiddenLayer1", "type": "Dense", "units": 256, "activation": "relu"},
+    {"id": "Dropout1", "type": "Dropout", "rate": 0.2},
+    {"id": "OutputLayer", "type": "Dense", "units": 10, "activation": "softmax"}
+  ],
+  "edges": [
+    {"from": "InputLayer", "to": "HiddenLayer1"},
+    {"from": "HiddenLayer1", "to": "Dropout1"},
+    {"from": "Dropout1", "to": "OutputLayer"}
+  ],
+  "hyperparameters": {
+    "learning_rate": 0.001,
+    "optimizer": "adam",
+    "batch_size": 32
+  },
+  "dynamic_rules": {
+    "increase_units_if_loss_not_improving": true,
+    "adjust_dropout_if_overfitting": true
+  }
+}
